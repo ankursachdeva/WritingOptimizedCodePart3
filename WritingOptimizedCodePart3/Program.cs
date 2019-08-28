@@ -18,7 +18,7 @@ namespace WritingOptimizedCodePart3
             Console.WriteLine("Displaying pattern" +
                 $" using Method 1 of {patternLength}" +
                 " pattern length 5 times.");
-            Stopwatch sw1 ;
+            Stopwatch sw1;
             for (int i = 0; i < 5; i++)
             {
                 sw1 = new Stopwatch();
@@ -29,7 +29,7 @@ namespace WritingOptimizedCodePart3
                     "Displaying pattern with " +
                 "Method 1 took " +
                 $"{sw1.ElapsedMilliseconds} ms.");
-                
+
             }
             Console.WriteLine("Displaying pattern " +
                 "using Method 2 of " +
@@ -48,7 +48,7 @@ namespace WritingOptimizedCodePart3
             }
             Console.WriteLine(sbOutput.ToString()
                 );
-            
+
             Console.ReadLine();
         }
         static void DisplayPatternMethod1(int patternLength)
@@ -56,16 +56,16 @@ namespace WritingOptimizedCodePart3
             int leftSpacer = 0;
             int middleSpacer = patternLength - 2;
             for (int rows = 0;
-                rows < patternLength/2; rows++)
+                rows < patternLength / 2; rows++)
             {
-                for (int initialSpaces = 0; 
-                    initialSpaces < leftSpacer; 
+                for (int initialSpaces = 0;
+                    initialSpaces < leftSpacer;
                     initialSpaces++)
                 {
                     Console.Write(" ");
                 }
                 Console.Write("*");
-                for (int spaces = 0; 
+                for (int spaces = 0;
                     spaces <= middleSpacer;
                     spaces++)
                 {
@@ -77,19 +77,19 @@ namespace WritingOptimizedCodePart3
                 Console.WriteLine();
             }
             //Reseting variables for bottom pattern
-            if (patternLength%2==0)
+            if (patternLength % 2 == 0)
             {
                 leftSpacer =
                     patternLength / 2 - 1;
             }
             else
             {
-                leftSpacer = 
+                leftSpacer =
                     patternLength / 2;
             }
-            
+
             middleSpacer = 0;
-            for (int rows = 0; 
+            for (int rows = 0;
                 rows < patternLength / 2; rows++)
             {
                 for (int initialSpaces = 0;
@@ -100,7 +100,7 @@ namespace WritingOptimizedCodePart3
                 }
                 Console.Write("*");
                 for (int spaces = 0;
-                    spaces < middleSpacer; 
+                    spaces < middleSpacer;
                     spaces++)
                 {
                     Console.Write(" ");
@@ -113,15 +113,15 @@ namespace WritingOptimizedCodePart3
         }
         static void DisplayPatternMethod2(int patternLength)
         {
-            for (int rows = 0; 
+            for (int rows = 0;
                 rows < patternLength; rows++)
             {
-                for (int cols = 0; 
+                for (int cols = 0;
                     cols < patternLength; cols++)
                 {
-                    if (rows!=cols 
-                        && 
-                        rows+cols+1!=patternLength)
+                    if (rows != cols
+                        &&
+                        rows + cols + 1 != patternLength)
                     {
                         Console.Write(" ");
                     }
