@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Text;
 
 namespace WritingOptimizedCodePart3
 {
@@ -7,6 +8,7 @@ namespace WritingOptimizedCodePart3
     {
         static void Main(string[] args)
         {
+            StringBuilder sbOutput = new StringBuilder();
             Console.Title = "Ankur Tech Center | Hanumantey Software Solutions";
             int patternLength = 26;
             Console.Write("Enter the " +
@@ -15,27 +17,38 @@ namespace WritingOptimizedCodePart3
                 , out patternLength);
             Console.WriteLine("Displaying pattern" +
                 $" using Method 1 of {patternLength}" +
-                " pattern length.");
-            Stopwatch sw1 = new Stopwatch();
-            sw1.Start();
-            DisplayPatternMethod1(patternLength);
-            sw1.Stop();
+                " pattern length 5 times.");
+            Stopwatch sw1 ;
+            for (int i = 0; i < 5; i++)
+            {
+                sw1 = new Stopwatch();
+                sw1.Start();
+                DisplayPatternMethod1(patternLength);
+                sw1.Stop();
+                sbOutput.AppendLine(
+                    "Displaying pattern with " +
+                "Method 1 took " +
+                $"{sw1.ElapsedMilliseconds} ms.");
+                
+            }
             Console.WriteLine("Displaying pattern " +
                 "using Method 2 of " +
-                $"{patternLength} pattern length.");
-            Stopwatch sw2 = new Stopwatch();
-            sw2.Start();
-            DisplayPatternMethod2(patternLength);
-            sw2.Stop();
-
-            Console.WriteLine(
-                "Displaying pattern with " +
-                "Method 1 took " +
-                $"{sw1.Elapsed.TotalMilliseconds} ms.");
-            Console.WriteLine(
+                $"{patternLength} pattern length 5 times.");
+            Stopwatch sw2;
+            for (int i = 0; i < 5; i++)
+            {
+                sw2 = new Stopwatch();
+                sw2.Start();
+                DisplayPatternMethod2(patternLength);
+                sw2.Stop();
+                sbOutput.AppendLine(
                 "Displaying pattern with" +
                 " Method 2 took " +
-                $"{sw2.Elapsed.TotalMilliseconds} ms.");
+                $"{sw2.ElapsedMilliseconds} ms.");
+            }
+            Console.WriteLine(sbOutput.ToString()
+                );
+            
             Console.ReadLine();
         }
         static void DisplayPatternMethod1(int patternLength)
@@ -106,15 +119,15 @@ namespace WritingOptimizedCodePart3
                 for (int cols = 0; 
                     cols < patternLength; cols++)
                 {
-                    if (rows==cols 
-                        || 
-                        rows+cols+1==patternLength)
+                    if (rows!=cols 
+                        && 
+                        rows+cols+1!=patternLength)
                     {
-                        Console.Write("*");
+                        Console.Write(" ");
                     }
                     else
                     {
-                        Console.Write(" ");
+                        Console.Write("*");
                     }
                 }
                 Console.WriteLine();
